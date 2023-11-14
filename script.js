@@ -29,7 +29,7 @@ function onEachFeature(feature, layer) {
         photoId = feature.properties.photourl.id
         popupText += `<br><img src='https://opendata.vancouver.ca/explore/dataset/public-art/files/${photoId}/300/' style='float:left;width:100%; max-height:500px; object-fit: cover;'/>`
     }
-    popupText += `<a href="${url}">More Info</a>`
+    popupText += `<a href="${url}" target="_blank">More Info</a>`
     layer.bindPopup(popupText, {
         maxHeight: 560
     })
