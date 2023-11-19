@@ -23,12 +23,13 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 function onEachFeature(feature, layer) {
-    [title_of_work, ownership, url] = [feature.properties.title_of_work, feature.properties.ownership, feature.properties.url]
+    [title_of_work, ownership, url, coords] = [feature.properties.title_of_work, feature.properties.ownership, feature.properties.url, feature.properties.geo_point_2d]
     popupText = `<b>${title_of_work}</b> <br> ${ownership ?? ''}`
     if (feature.properties.photourl != null) { // add photo id url
         photoId = feature.properties.photourl.id
         popupText += `<br><img src='https://opendata.vancouver.ca/explore/dataset/public-art/files/${photoId}/300/' style='float:left;width:100%; max-height:500px; object-fit: cover;'/>`
     }
+    popupText += `<a href="https://www.google.com/maps/search/?api=1&query=${coords.lon}%2C-${coords.lat}" target="_blank">Directions</a>`
     popupText += `<a href="${url}" target="_blank">More Info</a>`
     layer.bindPopup(popupText, {
         maxHeight: 560
