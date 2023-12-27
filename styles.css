@@ -5,3 +5,10 @@
     left: 0;
     right: 0;
 }
+
+img {
+    float: left;
+    width:  100px;
+    height: auto;
+    object-fit: cover;
+}
